@@ -1,5 +1,9 @@
-FROM hypriot/rpi-java
+FROM resin/rpi-raspbian
 
-ADD * /var/jumajumo/apps/
+RUN apt update && apt install -y openjdk-8-jdk
 
-RUN java -Dspring.active.profiles=container -jar /var/jumajumo/apps/homework-app.jar
+ADD homework-app.jar .
+
+CMD ["java","-jar","homework-app.jar"]
+
+
